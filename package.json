@@ -4,7 +4,7 @@
   "main": "src/photomosaic.js",
   "scripts": {
     "commit": "git-cz",
-    "test": "mocha test/photomozaic.test.js",
+    "test": "mocha test/photomosaic.test.js",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
@@ -37,5 +37,10 @@
   },
   "czConfig": {
     "path": "node_modules/cz-conventional-changelog"
+  },
+  "config": {
+    "ghooks": {
+      "pre-commit": "npm run test"
+     }
   }
 }
