@@ -1,0 +1,24 @@
+{
+  "name": "photomosaic.js",
+  "version": "0.0.0",
+  "homepage": "https://github.com/ritz078/photomosaic.js",
+  "authors": [
+    "Ritesh Kumar <rkritesh078@gmail.com>"
+  ],
+  "description": "A javascript plugin that creates a photomosaic of an image",
+  "main": "src/photomozaic.js",
+  "keywords": [
+    "photomozaic",
+    "mozaic",
+    "image"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "www/lib",
+    "test",
+    "tests"
+  ]
+}
