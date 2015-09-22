@@ -16,7 +16,10 @@
     "mosaic",
     "image"
   ],
-  "author": "Ritesh Kumar",
+  "author": {
+    "name":"Ritesh Kumar",
+    "email":"rkritesh078@gmail.com"
+    },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ritz078/photomosaic.js/issues"
