@@ -2,8 +2,8 @@
     'use-strict';
 
     function PhotoMosaic(options) {
-        if (!image) {
-            throw new Error('image options is not passed')
+        if (!options.image) {
+            throw new Error('image options is not passed');
         }
     }
 
@@ -12,9 +12,9 @@
      * @type {Object}
      */
     PhotoMosaic.defaults = {
-        "tileWidth": 16,
-        "tileHeight": 16
-    }
+        'tileWidth': 16,
+        'tileHeight': 16
+    };
 
     /**
      * Converts RGB into hex colour code
@@ -26,7 +26,7 @@
             green = rgb.g,
             blue = rgb.b;
 
-        return ((1 << 24) + (red << 16) + (green << 8) + blue).toString(16).slice(1)
+        return ((1 << 24) + (red << 16) + (green << 8) + blue).toString(16).slice(1);
     };
 
     /**
@@ -57,7 +57,7 @@
         rgb.g = Math.floor(rgb.g / count);
         rgb.b = Math.floor(rgb.b / count);
 
-        return rgbToHex(rgb);
+        return PhotoMosaic.rgbToHex(rgb);
     };
 
     window.PhotoMosaic = PhotoMosaic;
