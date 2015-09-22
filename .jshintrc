@@ -3,10 +3,6 @@
   "jquery": true,
   "node": true,
   "esnext": false,
-  "globals": {
-    "hljs":true,
-    "twttr":true
-  },
   "laxcomma": true,
   "globalstrict": false,
   "quotmark": "single",
