@@ -1,15 +1,15 @@
 {
   "name": "photomosaic.js",
-  "version": "1.0.0",
   "description": "A javascript plugin that creates a photomosaic of an image",
   "main": "src/photomosaic.js",
   "scripts": {
     "commit": "git-cz",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test/photomozaic.test.js",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ritz078/photomosaic.js.git"
+    "url": "https://github.com/ritz078/photomosaic.js.git"
   },
   "keywords": [
     "photomosaic",
