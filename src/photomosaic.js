@@ -1,64 +1,65 @@
-(function() {
-    'use-strict';
+  (function(window) {
 
-    function PhotoMosaic(options) {
-        if (!options.image) {
-            throw new Error('image options is not passed');
-        }
-    }
+      'use-strict';
 
-    /**
-     * The defaults options object
-     * @type {Object}
-     */
-    PhotoMosaic.defaults = {
-        'tileWidth': 16,
-        'tileHeight': 16
-    };
+      function PhotoMosaic(options) {
+          if (!options.image) {
+              throw new Error('image options is not passed');
+          }
+      }
 
-    /**
-     * Converts RGB into hex colour code
-     * @param rgb
-     * @returns {string}
-     */
-    PhotoMosaic.prototype.rgbToHex = function(rgb) {
-        var red = rgb.r,
-            green = rgb.g,
-            blue = rgb.b;
+      /**
+       * The defaults options object
+       * @type {Object}
+       */
+      PhotoMosaic.defaults = {
+          'tileWidth': 16,
+          'tileHeight': 16
+      };
 
-        return ((1 << 24) + (red << 16) + (green << 8) + blue).toString(16).slice(1);
-    };
+      /**
+       * Converts RGB into hex colour code
+       * @param rgb
+       * @returns {string}
+       */
+      PhotoMosaic.prototype.rgbToHex = function(rgb) {
+          var red = rgb.r,
+              green = rgb.g,
+              blue = rgb.b;
 
-    /**
-     * Returns the average color of the canvas.
-     * @param  {Array} data 	The data received by using the getImage() method
-     * @return {Object}      	The object containing the RGB value
-     */
-    PhotoMosaic.prototype.getAverageColor = function(data) {
-        var i = -4,
-            pixelInterval = 5,
-            count = 0,
-            rgb = {
-                r: 0,
-                g: 0,
-                b: 0
-            },
-            length = data.length;
+          return ((1 << 24) + (red << 16) + (green << 8) + blue).toString(16).slice(1);
+      };
 
-        while ((i += pixelInterval * 4) < length) {
-            count++;
-            rgb.r += data[i];
-            rgb.g += data[i + 1];
-            rgb.b += data[i + 2];
-        }
+      /**
+       * Returns the average color of the canvas.
+       * @param  {Array} data     The data received by using the getImage() method
+       * @return {Object}         The object containing the RGB value
+       */
+      PhotoMosaic.prototype.getAverageColor = function(data) {
+          var i = -4,
+              pixelInterval = 5,
+              count = 0,
+              rgb = {
+                  r: 0,
+                  g: 0,
+                  b: 0
+              },
+              length = data.length;
 
-        // floor the average values to give correct rgb values (ie: round number values)
-        rgb.r = Math.floor(rgb.r / count);
-        rgb.g = Math.floor(rgb.g / count);
-        rgb.b = Math.floor(rgb.b / count);
+          while ((i += pixelInterval * 4) < length) {
+              count++;
+              rgb.r += data[i];
+              rgb.g += data[i + 1];
+              rgb.b += data[i + 2];
+          }
 
-        return PhotoMosaic.rgbToHex(rgb);
-    };
+          // floor the average values to give correct rgb values (ie: round number values)
+          rgb.r = Math.floor(rgb.r / count);
+          rgb.g = Math.floor(rgb.g / count);
+          rgb.b = Math.floor(rgb.b / count);
 
-    window.PhotoMosaic = PhotoMosaic;
-}());
+          return PhotoMosaic.rgbToHex(rgb);
+      };
+
+      window.PhotoMosaic = PhotoMosaic;
+  }(window));
