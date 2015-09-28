@@ -9,12 +9,27 @@
       }
 
       /**
+       * Extends a Javascript Object
+       * @param  {object} destination The object in which the final extended values are save
+       * @param  {object} sources     The objects to be extended
+       * @return {}
+       */
+      PhotoMosaic.prototype.extend = function(destination, sources) {
+          for (var src in sources) {
+              if (sources.hasOwnProperty(source)) {
+                  destination[source] = sources[source];
+              }
+          }
+      };
+
+      /**
        * The defaults options object
        * @type {Object}
        */
       PhotoMosaic.defaults = {
           'tileWidth': 16,
-          'tileHeight': 16
+          'tileHeight': 16,
+          'progressive': true
       };
 
       /**
@@ -53,7 +68,7 @@
               rgb.b += data[i + 2];
           }
 
-          // floor the average values to give correct rgb values (ie: round number values)
+          // floor the average values to give correct rgb values
           rgb.r = Math.floor(rgb.r / count);
           rgb.g = Math.floor(rgb.g / count);
           rgb.b = Math.floor(rgb.b / count);
