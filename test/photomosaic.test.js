@@ -33,5 +33,37 @@ describe('PhotoMosaic', function() {
                 expect(photomosaic.rgbToHex(rgb)).to.equal('372217')
             });
         })
+
+        describe('extend() method', function () {
+            var a = {
+                x:2,
+                y:3,
+                z:true
+            }
+
+            var b = {
+                x:5,
+                z:false
+            }
+
+            var result = {
+                x:5,
+                y:3,
+                z:false
+            }
+
+            var photomosaic = new PhotoMosaic({
+                'image': image
+            });
+
+
+            it('should return an object', function () {
+                expect(photomosaic.extend(a,b)).to.be.a('object');
+            });
+
+            it('should extend an object', function () {
+                expect(photomosaic.extend(a,b)).to.eql(result);
+            });
+        });
     })
 })

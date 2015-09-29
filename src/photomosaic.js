@@ -15,11 +15,12 @@
        * @return {}
        */
       PhotoMosaic.prototype.extend = function(destination, sources) {
-          for (var src in sources) {
+          for (var source in sources) {
               if (sources.hasOwnProperty(source)) {
                   destination[source] = sources[source];
               }
           }
+          return destination;
       };
 
       /**
