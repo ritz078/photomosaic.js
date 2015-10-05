@@ -6,23 +6,25 @@
           if (!options.image) {
               throw new Error('image options is not passed');
           }
-          if (!options.targetElement){
-            throw new Error('targetElement is not passed in options');
+          if (!options.targetElement) {
+              throw new Error('targetElement is not passed in options');
           }
 
           this.options = this.extend(this.defaults, options);
 
-          var _this = this;
-
-          options.image.crossOrigin = 'Anonymous';
-
-          this.options.image.onload = function() {
-              _this.options.divX = Math.floor(_this.options.image.width / _this.options.tileWidth);
-              _this.options.divY = Math.floor(_this.options.image.height / _this.options.tileHeight);
-              var context = _this.renderImage();
-              _this.tileCanvas(context);
-          };
+          if (this.options.image.complete) {
+              this.process();
+          } else {
+              this.options.image.onload = this.process;
+          }
       }
+
+      PhotoMosaic.prototype.process = function() {
+          this.options.divX = Math.floor(this.options.width / this.options.tileWidth);
+          this.options.divY = Math.floor(this.options.height / this.options.tileHeight);
+          var context = this.renderImage();
+          this.tileCanvas(context);
+      };
 
       /**
        * Extends a Javascript Object
@@ -45,11 +47,13 @@
        */
       PhotoMosaic.prototype.defaults = {
           'image': null,
-          'tileWidth': 6,
-          'tileHeight': 6,
+          'tileWidth': 5,
+          'tileHeight': 5,
           'targetElement': null,
           'tileShape': 'circle',
-          'opacity': 1
+          'opacity': 1,
+          'width': null,
+          'height': null
       };
 
       /**
