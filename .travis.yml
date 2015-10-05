@@ -3,6 +3,9 @@ language: node_js
 cache:
   directories:
     - node_modules
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/
 notifications:
   email: false
 node_js:
