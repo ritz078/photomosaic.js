@@ -15,7 +15,7 @@
           if (this.options.image.complete) {
               this.process();
           } else {
-              this.options.image.onload = this.process;
+              this.options.image.onload = this.process.bind(this);
           }
       }
 
