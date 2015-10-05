@@ -3,8 +3,23 @@
 <head>
 	<meta charset="UTF-8">
 	<title>photomosaic.js</title>
+	<style>
+		img{
+			width: 500px;
+			height: 500px;
+		}
+	</style>
 </head>
 <body>
-
+<img src="image.jpg" id='image' alt="">
+<div id='target'></div>
 </body>
+<script src='../src/photomosaic.js'></script>
+<script>
+	var photomosaic = new PhotoMosaic({
+		image : document.getElementById('image'),
+		targetElement : document.getElementById('target'),
+		tileShape: 'rectangle'
+	})
+</script>
 </html>
