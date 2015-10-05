@@ -1,7 +1,7 @@
 {
   "name": "photomosaic.js",
   "description": "A javascript plugin that creates a photomosaic of an image",
-  "version":"0.0.0",
+  "version":"1.0.0",
   "main": "src/photomosaic.js",
   "scripts": {
     "commit": "git-cz",
