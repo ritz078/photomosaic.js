@@ -1,0 +1,89 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,100);
+*{
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+html {
+    font-family: 'Roboto', sans-serif;
+    background: -webkit-linear-gradient(90deg, #232526 10%, #414345 90%);
+    /* Chrome 10+, Saf5.1+ */
+    background: -moz-linear-gradient(90deg, #232526 10%, #414345 90%);
+    /* FF3.6+ */
+    background: -ms-linear-gradient(90deg, #232526 10%, #414345 90%);
+    /* IE10 */
+    background: -o-linear-gradient(90deg, #232526 10%, #414345 90%);
+    /* Opera 11.10+ */
+    background: linear-gradient(90deg, #232526 10%, #414345 90%);
+    /* W3C */
+}
+
+body {
+    width: 80%;
+    margin: 0 auto;
+}
+
+h3 {
+    font-size: 45px;
+    color: #fff;
+    font-weight: 100;
+    text-align: center;
+    margin-top: 40px;
+}
+
+img {
+    width: 400px;
+    height: 400px;
+}
+
+#image,
+#target canvas {
+    border: 5px solid #fff;
+    border-radius: 2px;
+    margin: 0 auto;
+    display: block;
+    background-color: #fff;
+}
+
+.block {
+    float: left;
+    width: 50%;
+    margin-top: 70px;
+}
+
+.fixed {
+    position: fixed;
+    bottom: 50px;
+    right: 50%;
+    margin-right: -92px;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+.fixed i {
+    font-size: 45px;
+}
+
+.fixed {
+    color: #ffffff;
+}
+
+.fixed i {
+    color: #cccccc;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.fixed a {
+    text-decoration: none;
+    color: deepskyblue;
+}
+
+.fixed a:hover {
+    color: #ffffff;
+}
