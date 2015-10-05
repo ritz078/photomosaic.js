@@ -15,7 +15,7 @@ module.exports = function(grunt) {
         },
 
         jshint: {
-            files: ["src/photomosaic.js", "test/photomosaic.test.js"],
+            files: ["src/photomosaic.js"],
             options: {
                 jshintrc: ".jshintrc"
             }
