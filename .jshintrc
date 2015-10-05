@@ -10,6 +10,5 @@
   "indent": 2,
   "undef": true,
   "unused": true,
-
   "predef": ["define"]
 }
