@@ -4,3 +4,4 @@ node_modules
 config.codekit
 demo/.DS_Store
 .DS_Store
+npm-debug.log
