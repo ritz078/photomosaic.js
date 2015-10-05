@@ -1,25 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>photomosaic.js</title>
-	<style>
-		img{
-			width: 500px;
-			height: 500px;
-		}
-	</style>
+    <meta charset="UTF-8">
+    <title>photomosaic.js</title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:100' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-<img src="image.jpg" id='image' alt="">
-<div id='target'></div>
+    <h3>photomosaic.js</h3>
+    <div class="block">
+        <img src="image.jpg" id='image' alt="">
+    </div>
+    <div class="block">
+        <div id='target'></div>
+    </div>
+    <div class="fixed">
+        <a href="https://github.com/ritz078/photomosaic.js">
+            <i class="fa fa-github"></i>
+            <br>
+        </a>
+        Created by <a href="https://github.com/ritz078">ritz078</a>
+    </div>
 </body>
-<script src='../src/photomosaic.js'></script>
+<script src='https://rawgit.com/ritz078/photomosaic.js/master/dist/photomosaic.min.js'></script>
 <script>
-	var photomosaic = new PhotoMosaic({
-		image : document.getElementById('image'),
-		targetElement : document.getElementById('target'),
-		tileShape: 'rectangle'
-	})
+var photomosaic = new PhotoMosaic({
+    image: document.getElementById('image'),
+    targetElement: document.getElementById('target'),
+    width: 400,
+    height: 400,
+    tileWidth: 4,
+    tileHeight: 4
+})
 </script>
+
 </html>
