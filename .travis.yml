@@ -13,4 +13,5 @@ before_install:
 before_script:
   - npm prune
 after_success:
+  - grunt
   - npm run semantic-release
