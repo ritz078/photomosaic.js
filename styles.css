@@ -50,10 +50,24 @@ img {
     background-color: #fff;
 }
 
+.share{
+    display: block;
+    margin: 30px auto;
+    height: 28px;
+}
+
+.twitter-share-button{
+    display: none;
+}
+
+.twitter-share-button-rendered{
+    display: block;
+    margin: 0 auto;
+}
+
 .block {
     float: left;
     width: 50%;
-    margin-top: 70px;
 }
 
 .fixed {
