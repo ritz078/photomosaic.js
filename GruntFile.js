@@ -30,8 +30,11 @@ module.exports = function(grunt) {
                 banner: "<%= meta.banner %>",
                 compress: {
                     drop_console: true
-                }
-            }
+                },
+                reserveDOMProperties:true,
+                mangle:{
+                    except:['PhotoMosaic']
+                }            }
         },
 
         copy: {

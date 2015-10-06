@@ -131,7 +131,7 @@
                   this.createMosaic(x, y, processedContext);
               }
           }
-          this.options.targetElement.append(processedCanvas);
+          this.options.targetElement.appendChild(processedCanvas);
       };
 
       /**
