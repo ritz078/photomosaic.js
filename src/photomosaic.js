@@ -117,33 +117,15 @@
           processedCanvas.height = context.canvas.height;
 
           var processedContext = processedCanvas.getContext('2d');
-
           var options = this.options;
-          
-          var originalImageData = context.getImageData(0, 0, context.canvas.width, context.canvas.height);
 
-          function getImageData(startX, startY, tileWidth, tileHeight) {
-              var data = [];
-              for (var x = startX; x < (startX + tileWidth); x++) {
-                  var xPos = x * 4;
-                  for (var y = startY; y < (startY + tileHeight); y++) {
-                      var yPos = y * width * 4;
-                      data.push(
-                        originalImageData.data[xPos + yPos + 0],
-                        originalImageData.data[xPos + yPos + 1],
-                        originalImageData.data[xPos + yPos + 2],
-                        originalImageData.data[xPos + yPos + 3]
-                      )
-                  }
-              }
-              return data;
-          }
+          var originalImageData = context.getImageData(0, 0, context.canvas.width, context.canvas.height);
 
           for (var i = 0; i < options.divY; i++) {
               for (var j = 0; j < options.divX; j++) {
                   var x = j * options.tileWidth,
                       y = i * options.tileHeight;
-                  var imageData = getImageData(x, y, options.tileWidth, options.tileHeight);
+                  var imageData = this.getImageData(x, y, width, originalImageData);
                   var averageColor = this.getAverageColor(imageData);
                   var color = 'rgba(' + averageColor.r + ',' + averageColor.g + ',' + averageColor.b + ',' + this.options.opacity + ')';
                   processedContext.fillStyle = color;
@@ -151,6 +133,33 @@
               }
           }
           this.options.targetElement.appendChild(processedCanvas);
+      };
+
+      /**
+       * Creates an array of the image data of the tile from the data of whole image
+       * @param  {number} startX            x coordinate of the tile
+       * @param  {number} startY            y coordinate of the tile
+       * @param  {number} width             width of the canvas
+       * @param  {object} originalImageData imageData if the whole canvas
+       * @return {array}                    Image data of a tile
+       */
+      PhotoMosaic.prototype.getImageData = function (startX, startY, width, originalImageData) {
+        var data = [];
+        var tileWidth = this.options.tileWidth;
+        var tileHeight = this.options.tileHeight;
+        for (var x = startX; x < (startX + tileWidth); x++) {
+            var xPos = x * 4;
+            for (var y = startY; y < (startY + tileHeight); y++) {
+                var yPos = y * width * 4;
+                data.push(
+                  originalImageData.data[xPos + yPos + 0],
+                  originalImageData.data[xPos + yPos + 1],
+                  originalImageData.data[xPos + yPos + 2],
+                  originalImageData.data[xPos + yPos + 3]
+                );
+            }
+        }
+        return data;
       };
 
       /**
