@@ -113,19 +113,38 @@
        */
       PhotoMosaic.prototype.tileCanvas = function(context) {
           var processedCanvas = document.createElement('canvas');
-          processedCanvas.width = context.canvas.width;
+          var width = processedCanvas.width = context.canvas.width;
           processedCanvas.height = context.canvas.height;
 
           var processedContext = processedCanvas.getContext('2d');
 
           var options = this.options;
+          
+          var originalImageData = context.getImageData(0, 0, context.canvas.width, context.canvas.height);
+
+          function getImageData(startX, startY, tileWidth, tileHeight) {
+              var data = [];
+              for (var x = startX; x < (startX + tileWidth); x++) {
+                  var xPos = x * 4;
+                  for (var y = startY; y < (startY + tileHeight); y++) {
+                      var yPos = y * width * 4;
+                      data.push(
+                        originalImageData.data[xPos + yPos + 0],
+                        originalImageData.data[xPos + yPos + 1],
+                        originalImageData.data[xPos + yPos + 2],
+                        originalImageData.data[xPos + yPos + 3]
+                      )
+                  }
+              }
+              return data;
+          }
 
           for (var i = 0; i < options.divY; i++) {
               for (var j = 0; j < options.divX; j++) {
                   var x = j * options.tileWidth,
                       y = i * options.tileHeight;
-                  var imageData = context.getImageData(x, y, options.tileWidth, options.tileHeight);
-                  var averageColor = this.getAverageColor(imageData.data);
+                  var imageData = getImageData(x, y, options.tileWidth, options.tileHeight);
+                  var averageColor = this.getAverageColor(imageData);
                   var color = 'rgba(' + averageColor.r + ',' + averageColor.g + ',' + averageColor.b + ',' + this.options.opacity + ')';
                   processedContext.fillStyle = color;
                   this.createMosaic(x, y, processedContext);
