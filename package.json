@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/ritz078/photomosaic.js#readme",
   "devDependencies": {
-    "chai": "3.4.1",
+    "chai": "3.5.0",
     "commitizen": "2.4.6",
     "cz-conventional-changelog": "1.1.5",
     "ghooks": "1.0.3",
