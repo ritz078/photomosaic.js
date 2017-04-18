@@ -53,11 +53,12 @@
           'tileShape': 'circle',
           'opacity': 1,
           'width': null,
-          'height': null
+          'height': null,
+          'defaultBackground': 'rgba(0, 0, 0, 0)'
       };
 
       /**
-       * Renders the image on a canvas before processing the pixels
+       * Renders the image with an default background on a canvas before processing the pixels
        * @return {object} Context of the canvas created
        */
       PhotoMosaic.prototype.renderImage = function() {
@@ -68,6 +69,13 @@
           canvas.height = options.tileHeight * options.divY;
 
           var context = canvas.getContext('2d');
+  
+          context.fillStyle = options.defaultBackground;
+          context.beginPath();
+          context.rect(0, 0, canvas.width, canvas.height);
+          context.closePath();
+          context.fill();
+          
           context.drawImage(options.image, 0, 0, canvas.width, canvas.height);
           return context;
       };
