@@ -38,9 +38,10 @@ var photomosaic = new PhotoMosaic({
 | tileWidth     | 5             | The tile division width for creating mosaic (in px) |
 | tileHeight    | 5             | The tile division height for creating mosaic (in px) |
 | tileShape     | ‘circle'      | The shape of the tiles (**circle** or **rectangle**) |
-| opacity       | 1             | opacity of the resulting image           |
+| opacity       | 1             | Opacity of the resulting image           |
 | width         | null          | [Mandatory] Width of the resulting image |
 | height        | null          | [Mandatory] Height of the resulting image |
+| defaultBackground | 'rgba(0, 0, 0, 0' | Default background to optimize result for png or other image with opacity |
 
 ### Example
 ```javascript
